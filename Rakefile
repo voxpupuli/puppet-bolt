@@ -27,7 +27,7 @@ rescue LoadError
   # voxpupuli-release not present
 else
   GCGConfig.user = 'voxpupuli'
-  GCGConfig.project = 'puppet-borg'
+  GCGConfig.project = 'puppet-bolt'
 end
 
 desc "Run main 'test' task and report merged results to coveralls"
