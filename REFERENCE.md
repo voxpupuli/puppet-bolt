@@ -24,15 +24,15 @@ The following parameters are available in the `bolt` class:
 
 * [`version`](#-bolt--version)
 * [`base_url`](#-bolt--base_url)
+* [`release_package`](#-bolt--release_package)
 * [`gpgkey`](#-bolt--gpgkey)
 * [`use_release_package`](#-bolt--use_release_package)
-* [`release_package`](#-bolt--release_package)
 
 ##### <a name="-bolt--version"></a>`version`
 
 Data type: `String[1]`
 
-
+desired version for bolt
 
 Default value: `'3.29.0'`
 
@@ -40,15 +40,23 @@ Default value: `'3.29.0'`
 
 Data type: `Stdlib::HTTPSUrl`
 
-
+HTTPS URL to the yumrepo base
 
 Default value: `'https://yum.puppet.com/'`
+
+##### <a name="-bolt--release_package"></a>`release_package`
+
+Data type: `String[1]`
+
+filename for the release package rpm
+
+Default value: `"puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm"`
 
 ##### <a name="-bolt--gpgkey"></a>`gpgkey`
 
 Data type: `String[1]`
 
-
+name of the GPG key filename in the repo
 
 Default value: `'RPM-GPG-KEY-puppet-20250406'`
 
@@ -56,17 +64,9 @@ Default value: `'RPM-GPG-KEY-puppet-20250406'`
 
 Data type: `Boolean`
 
-
+enable/disable the puppet-tools-release package installation. When disabled, we will configure the repo as yumrepo resource
 
 Default value: `true`
-
-##### <a name="-bolt--release_package"></a>`release_package`
-
-Data type: `String[1]`
-
-
-
-Default value: `"puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm"`
 
 ## Defined types
 
