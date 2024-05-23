@@ -91,7 +91,7 @@ The following parameters are available in the `bolt::project` defined type:
 
 Data type: `Stdlib::Absolutepath`
 
-
+rootdir where the project will be created into
 
 Default value: `'/opt/'`
 
@@ -99,7 +99,7 @@ Default value: `'/opt/'`
 
 Data type: `String[1]`
 
-
+the name of the project
 
 Default value: `$name`
 
@@ -107,7 +107,7 @@ Default value: `$name`
 
 Data type: `String[1]`
 
-
+the user that will own the files and run the service
 
 Default value: `$project`
 
@@ -115,7 +115,7 @@ Default value: `$project`
 
 Data type: `String[1]`
 
-
+the group for all files
 
 Default value: `$project`
 
@@ -123,7 +123,7 @@ Default value: `$project`
 
 Data type: `Boolean`
 
-
+if we should create the user+group or not
 
 Default value: `true`
 
@@ -131,7 +131,7 @@ Default value: `true`
 
 Data type: `Array[String[1]]`
 
-
+a list of all plans we want to run
 
 Default value: `[]`
 
@@ -139,7 +139,7 @@ Default value: `[]`
 
 Data type: `String[1]`
 
-
+the desired code environment we will use
 
 Default value: `'peadm'`
 
@@ -147,7 +147,7 @@ Default value: `'peadm'`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
-
+an array of directories where code lives
 
 Default value: `["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site",]`
 

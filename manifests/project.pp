@@ -1,8 +1,14 @@
 #
 # @summary creates required files for a bolt project. Will create one oneshot service for each plan
 #
-# @param basepath
-# @param project
+# @param basepath rootdir where the project will be created into
+# @param project the name of the project
+# @param owner the user that will own the files and run the service
+# @param group the group for all files
+# @param manage_user if we should create the user+group or not
+# @param plans a list of all plans we want to run
+# @param environment the desired code environment we will use
+# @param modulepaths an array of directories where code lives
 #
 # @author Tim Meusel <tim@bastelfreak.de>
 #
