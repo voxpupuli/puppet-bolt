@@ -1,10 +1,11 @@
 #
 # @summary installs bolt via yumrepo or release package
 #
-# @param version
-# @param base_url
-# @param gpgkey
-# @param use_release_package
+# @param version desired version for bolt
+# @param base_url HTTPS URL to the yumrepo base
+# @param release_package filename for the release package rpm
+# @param gpgkey name of the GPG key filename in the repo
+# @param use_release_package enable/disable the puppet-tools-release package installation. When disabled, we will configure the repo as yumrepo resource
 #
 # @author Tim Meusel <tim@bastelfreak.de>
 #
