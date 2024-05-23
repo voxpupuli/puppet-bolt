@@ -68,7 +68,7 @@ define bolt::project (
           {
             'name' => $facts['networking']['fqdn'],
             'uri' => 'local://localhost',
-          },,
+          },
         ]
       }
     ],
