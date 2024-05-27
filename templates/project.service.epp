@@ -21,4 +21,4 @@ ExecStart=/opt/puppetlabs/bin/bolt plan run %i --params @<%= $project_path %>/%i
 User=<%= $user %>
 Group=<%= $group %>
 WorkingDirectory=<%= $project_path %>
-# don't add RemainAfterExit, then we cannot tracke the state via puppet anymore after bolt started
+# don't add RemainAfterExit, then we cannot track the state via puppet anymore after bolt started

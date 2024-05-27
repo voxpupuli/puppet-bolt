@@ -10,6 +10,14 @@
 # @param environment the desired code environment we will use
 # @param modulepaths an array of directories where code lives
 #
+# @example create one project and provide plan parameters
+#   bolt::project { 'peadmmig': }
+#   -> file { '/opt/peadmmig/profiles::convert.json':
+#     owner   => 'peadmmig',
+#     group   => 'peadmmig',
+#     content => { 'primary_host' => $facts['networking']['fqdn'] }.stdlib::to_json_pretty,
+#   }
+#
 # @author Tim Meusel <tim@bastelfreak.de>
 #
 define bolt::project (
