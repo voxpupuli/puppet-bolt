@@ -120,7 +120,6 @@ The following parameters are available in the `bolt::project` defined type:
 * [`owner`](#-bolt--project--owner)
 * [`group`](#-bolt--project--group)
 * [`manage_user`](#-bolt--project--manage_user)
-* [`plans`](#-bolt--project--plans)
 * [`environment`](#-bolt--project--environment)
 * [`modulepaths`](#-bolt--project--modulepaths)
 
@@ -163,14 +162,6 @@ Data type: `Boolean`
 if we should create the user+group or not
 
 Default value: `true`
-
-##### <a name="-bolt--project--plans"></a>`plans`
-
-Data type: `Array[String[1]]`
-
-a list of all plans we want to run
-
-Default value: `[]`
 
 ##### <a name="-bolt--project--environment"></a>`environment`
 

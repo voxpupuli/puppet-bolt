@@ -6,7 +6,6 @@
 # @param owner the user that will own the files and run the service
 # @param group the group for all files
 # @param manage_user if we should create the user+group or not
-# @param plans a list of all plans we want to run
 # @param environment the desired code environment we will use
 # @param modulepaths an array of directories where code lives
 #
@@ -26,7 +25,6 @@ define bolt::project (
   String[1] $owner = $project,
   String[1] $group = $project,
   Boolean $manage_user = true,
-  Array[String[1]] $plans = [],
   String[1] $environment = 'peadm',
   Array[Stdlib::Absolutepath] $modulepaths = ["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site",],
 ) {
