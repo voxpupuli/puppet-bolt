@@ -18,6 +18,30 @@
 
 installs bolt via yumrepo or release package
 
+#### Examples
+
+##### install bolt via puppet-tools-release rpm
+
+```puppet
+include bolt
+```
+
+##### install bolt via puppet-tools-release which is on a mirror
+
+```puppet
+class { 'bolt':
+  base_url => 'https://mirror.corp.internal',
+}
+```
+
+##### manage the yumrepo directly
+
+```puppet
+class { 'bolt':
+  use_release_package => false,
+}
+```
+
 #### Parameters
 
 The following parameters are available in the `bolt` class:
@@ -73,6 +97,19 @@ Default value: `true`
 ### <a name="bolt--project"></a>`bolt::project`
 
 creates required files for a bolt project. Will create one oneshot service for each plan
+
+#### Examples
+
+##### create one project and provide plan parameters
+
+```puppet
+bolt::project { 'peadmmig': }
+-> file { '/opt/peadmmig/profiles::convert.json':
+  owner   => 'peadmmig',
+  group   => 'peadmmig',
+  content => { 'primary_host' => $facts['networking']['fqdn'] }.stdlib::to_json_pretty,
+}
+```
 
 #### Parameters
 

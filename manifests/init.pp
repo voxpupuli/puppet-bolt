@@ -7,6 +7,19 @@
 # @param gpgkey name of the GPG key filename in the repo
 # @param use_release_package enable/disable the puppet-tools-release package installation. When disabled, we will configure the repo as yumrepo resource
 #
+# @example install bolt via puppet-tools-release rpm
+#   include bolt
+#
+# @example install bolt via puppet-tools-release which is on a mirror
+#   class { 'bolt':
+#     base_url => 'https://mirror.corp.internal',
+#   }
+#
+# @example manage the yumrepo directly
+#   class { 'bolt':
+#     use_release_package => false,
+#   }
+#
 # @author Tim Meusel <tim@bastelfreak.de>
 #
 class bolt (
