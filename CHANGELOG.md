@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v0.2.0](https://github.com/voxpupuli/puppet-bolt/tree/v0.2.0) (2024-06-17)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v0.1.0...v0.2.0)
+
+**Breaking changes:**
+
+- Drop EoL RedHat 7 [\#19](https://github.com/voxpupuli/puppet-bolt/pull/19) ([bastelfreak](https://github.com/bastelfreak))
+- Drop EoL CentOS 7/8 [\#18](https://github.com/voxpupuli/puppet-bolt/pull/18) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- README.md: Switch puppetmodule.info link to https [\#17](https://github.com/voxpupuli/puppet-bolt/pull/17) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v0.1.0](https://github.com/voxpupuli/puppet-bolt/tree/v0.1.0) (2024-05-27)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/4b4c88b6ad8eadab239d3a78f4931a80bd03aea2...v0.1.0)
