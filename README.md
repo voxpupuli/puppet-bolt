@@ -6,7 +6,7 @@
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/bolt.svg)](https://forge.puppetlabs.com/puppet/bolt)
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/bolt.svg)](https://forge.puppetlabs.com/puppet/bolt)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/bolt.svg)](https://forge.puppetlabs.com/puppet/bolt)
-[![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/puppet-bolt)
+[![puppetmodule.info docs](https://www.puppetmodule.info/images/badge.png)](https://www.puppetmodule.info/m/puppet-bolt)
 [![AGPL v3 License](https://img.shields.io/github/license/voxpupuli/puppet-bolt.svg)](LICENSE)
 
 ## Table of contents
