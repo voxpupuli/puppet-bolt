@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v0.3.0](https://github.com/voxpupuli/puppet-bolt/tree/v0.3.0) (2024-06-24)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v0.2.0...v0.3.0)
+
+**Implemented enhancements:**
+
+- Implement version=absent to remove bolt [\#22](https://github.com/voxpupuli/puppet-bolt/pull/22) ([bastelfreak](https://github.com/bastelfreak))
+- Increase acceptance test coverage [\#21](https://github.com/voxpupuli/puppet-bolt/pull/21) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v0.2.0](https://github.com/voxpupuli/puppet-bolt/tree/v0.2.0) (2024-06-17)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v0.1.0...v0.2.0)
