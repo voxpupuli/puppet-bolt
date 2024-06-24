@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'spec_helper_acceptance'
-
+RSpec::Matchers.define_negated_matcher :be_missing, :be_file
 describe 'bolt' do
-  describe 'with manually managed repo' do
+  describe 'with use_release_package=false' do
     it_behaves_like 'an idempotent resource' do
       let(:manifest) do
         <<-PUPPET
@@ -11,17 +11,34 @@ describe 'bolt' do
         PUPPET
       end
     end
-    describe package('puppet-bolt') do
-      it { is_expected.to be_installed }
-    end
 
-    describe package('puppet-tools-release') do
-      it { is_expected.not_to be_installed }
+    describe 'packages' do
+      it { expect(package('puppet-bolt')).to be_installed }
+      it { expect(package('puppet-tools-release')).not_to be_installed }
     end
   end
 
-  describe command('yum clean all --verbose; rm -rf /etc/yum.repos.d/puppet-tools-release.repo; yum erase --assumeyes puppet-bolt puppet-tools-release') do
-    its(:exit_status) { is_expected.to eq 0 }
+  describe 'with use_release_package=false & ensure=absent' do
+    it_behaves_like 'an idempotent resource' do
+      let(:manifest) do
+        <<-PUPPET
+        class { 'bolt':
+          use_release_package => false,
+          version => 'absent',
+        }
+        PUPPET
+      end
+    end
+
+    describe 'packages' do
+      it { expect(package('puppet-bolt')).not_to be_installed }
+      it { expect(package('puppet-tools-release')).not_to be_installed }
+    end
+
+    # puppet 7 and below remove repos from the file, puppet 8 deletes the file
+    describe 'file' do
+      it { expect(file('/etc/yum.repos.d/puppet-tools.repo')).to be_missing.or(have_attributes(size: 0)) }
+    end
   end
 
   describe 'with defaults' do
@@ -32,14 +49,30 @@ describe 'bolt' do
         PUPPET
       end
     end
-    # rubocop:disable RSpec/RepeatedExampleGroupBody
-    describe package('puppet-bolt') do
-      it { is_expected.to be_installed }
+
+    describe 'packages' do
+      it { expect(package('puppet-bolt')).to be_installed }
+      it { expect(package('puppet-tools-release')).to be_installed }
+    end
+  end
+
+  describe 'with ensure=absent' do
+    it_behaves_like 'an idempotent resource' do
+      let(:manifest) do
+        <<-PUPPET
+        class { 'bolt':
+          version => 'absent',
+        }
+        PUPPET
+      end
+    end
+    describe 'packages' do
+      it { expect(package('puppet-bolt')).not_to be_installed }
+      it { expect(package('puppet-tools-release')).not_to be_installed }
     end
 
-    describe package('puppet-tools-release') do
-      it { is_expected.to be_installed }
+    describe 'file' do
+      it { expect(file('/etc/yum.repos.d/puppet-tools.repo')).to be_missing.or(have_attributes(size: 0)) }
     end
-    # rubocop:enable RSpec/RepeatedExampleGroupBody
   end
 end

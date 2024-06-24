@@ -56,7 +56,7 @@ The following parameters are available in the `bolt` class:
 
 Data type: `String[1]`
 
-desired version for bolt
+desired version for bolt or `absent`
 
 Default value: `'3.29.0'`
 

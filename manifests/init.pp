@@ -1,7 +1,7 @@
 #
 # @summary installs bolt via yumrepo or release package
 #
-# @param version desired version for bolt
+# @param version desired version for bolt or `absent`
 # @param base_url HTTPS URL to the yumrepo base
 # @param release_package filename for the release package rpm
 # @param gpgkey name of the GPG key filename in the repo
@@ -33,15 +33,19 @@ class bolt (
     fail('class bolt only works on RedHat OS family')
   }
 
+  $ensure = $version ? {
+    'absent' => 'absent',
+    default  => 'present',
+  }
   if $use_release_package {
     package { 'puppet-tools-release':
-      ensure => present,
+      ensure => $ensure,
       source => "${base_url}${release_package}",
       before => Package['puppet-bolt'],
     }
   } else {
     yumrepo { 'puppet-tools':
-      ensure   => 'present',
+      ensure   => $ensure,
       baseurl  => "${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch",
       descr    => "Puppet Tools Repository el ${facts['os']['release']['major']} - \$basearch",
       enabled  => '1',
