@@ -42,6 +42,15 @@ class { 'bolt':
 }
 ```
 
+##### manage the yumrepo with an internal mirror with odd directory layout
+
+```puppet
+class { 'bolt':
+  base_url         => 'https://internal.mirror.corp/keys/',
+  yumrepo_base_url => 'https://internal.mirror.corp/puppet/puppet_tools/rhel8/',
+}
+```
+
 #### Parameters
 
 The following parameters are available in the `bolt` class:
@@ -51,6 +60,7 @@ The following parameters are available in the `bolt` class:
 * [`release_package`](#-bolt--release_package)
 * [`gpgkey`](#-bolt--gpgkey)
 * [`use_release_package`](#-bolt--use_release_package)
+* [`yumrepo_base_url`](#-bolt--yumrepo_base_url)
 
 ##### <a name="-bolt--version"></a>`version`
 
@@ -91,6 +101,14 @@ Data type: `Boolean`
 enable/disable the puppet-tools-release package installation. When disabled, we will configure the repo as yumrepo resource
 
 Default value: `true`
+
+##### <a name="-bolt--yumrepo_base_url"></a>`yumrepo_base_url`
+
+Data type: `Stdlib::HTTPSUrl`
+
+configure the full repo URL, useful when you don't exactly mirror yum.puppet.com
+
+Default value: `"${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch"`
 
 ## Defined types
 

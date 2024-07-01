@@ -6,6 +6,7 @@
 # @param release_package filename for the release package rpm
 # @param gpgkey name of the GPG key filename in the repo
 # @param use_release_package enable/disable the puppet-tools-release package installation. When disabled, we will configure the repo as yumrepo resource
+# @param yumrepo_base_url configure the full repo URL, useful when you don't exactly mirror yum.puppet.com
 #
 # @example install bolt via puppet-tools-release rpm
 #   include bolt
@@ -20,6 +21,12 @@
 #     use_release_package => false,
 #   }
 #
+# @example manage the yumrepo with an internal mirror with odd directory layout
+#   class { 'bolt':
+#     base_url         => 'https://internal.mirror.corp/keys/',
+#     yumrepo_base_url => 'https://internal.mirror.corp/puppet/puppet_tools/rhel8/',
+#   }
+#
 # @author Tim Meusel <tim@bastelfreak.de>
 #
 class bolt (
@@ -28,6 +35,7 @@ class bolt (
   String[1] $release_package = "puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm",
   String[1] $gpgkey = 'RPM-GPG-KEY-puppet-20250406',
   Boolean $use_release_package = true,
+  Stdlib::HTTPSUrl $yumrepo_base_url = "${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch",
 ) {
   unless $facts['os']['family'] == 'RedHat' {
     fail('class bolt only works on RedHat OS family')
@@ -46,7 +54,7 @@ class bolt (
   } else {
     yumrepo { 'puppet-tools':
       ensure   => $ensure,
-      baseurl  => "${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch",
+      baseurl  => $yumrepo_base_url,
       descr    => "Puppet Tools Repository el ${facts['os']['release']['major']} - \$basearch",
       enabled  => '1',
       gpgcheck => '1',
