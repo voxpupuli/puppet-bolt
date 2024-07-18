@@ -61,6 +61,7 @@ The following parameters are available in the `bolt` class:
 * [`gpgkey`](#-bolt--gpgkey)
 * [`use_release_package`](#-bolt--use_release_package)
 * [`yumrepo_base_url`](#-bolt--yumrepo_base_url)
+* [`manage_repo`](#-bolt--manage_repo)
 
 ##### <a name="-bolt--version"></a>`version`
 
@@ -109,6 +110,14 @@ Data type: `Stdlib::HTTPSUrl`
 configure the full repo URL, useful when you don't exactly mirror yum.puppet.com
 
 Default value: `"${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch"`
+
+##### <a name="-bolt--manage_repo"></a>`manage_repo`
+
+Data type: `Boolean`
+
+when true, a repo will be added to install bolt. Useful when you manage repos externally. See also $use_release_package
+
+Default value: `true`
 
 ## Defined types
 
