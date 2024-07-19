@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v1.0.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.0.0) (2024-07-01)
+## [v1.1.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.1.0) (2024-07-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.0.0...v1.1.0)
+
+**Implemented enhancements:**
+
+- Make repo management optional [\#28](https://github.com/voxpupuli/puppet-bolt/pull/28) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v1.0.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.0.0) (2024-07-02)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v0.3.0...v1.0.0)
 
