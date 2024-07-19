@@ -7,6 +7,7 @@
 # @param gpgkey name of the GPG key filename in the repo
 # @param use_release_package enable/disable the puppet-tools-release package installation. When disabled, we will configure the repo as yumrepo resource
 # @param yumrepo_base_url configure the full repo URL, useful when you don't exactly mirror yum.puppet.com
+# @param manage_repo when true, a repo will be added to install bolt. Useful when you manage repos externally. See also $use_release_package
 #
 # @example install bolt via puppet-tools-release rpm
 #   include bolt
@@ -36,6 +37,7 @@ class bolt (
   String[1] $gpgkey = 'RPM-GPG-KEY-puppet-20250406',
   Boolean $use_release_package = true,
   Stdlib::HTTPSUrl $yumrepo_base_url = "${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch",
+  Boolean $manage_repo = true,
 ) {
   unless $facts['os']['family'] == 'RedHat' {
     fail('class bolt only works on RedHat OS family')
@@ -45,21 +47,23 @@ class bolt (
     'absent' => 'absent',
     default  => 'present',
   }
-  if $use_release_package {
-    package { 'puppet-tools-release':
-      ensure => $ensure,
-      source => "${base_url}${release_package}",
-      before => Package['puppet-bolt'],
-    }
-  } else {
-    yumrepo { 'puppet-tools':
-      ensure   => $ensure,
-      baseurl  => $yumrepo_base_url,
-      descr    => "Puppet Tools Repository el ${facts['os']['release']['major']} - \$basearch",
-      enabled  => '1',
-      gpgcheck => '1',
-      gpgkey   => "${base_url}${gpgkey}",
-      before   => Package['puppet-bolt'],
+  if $manage_repo {
+    if $use_release_package {
+      package { 'puppet-tools-release':
+        ensure => $ensure,
+        source => "${base_url}${release_package}",
+        before => Package['puppet-bolt'],
+      }
+    } else {
+      yumrepo { 'puppet-tools':
+        ensure   => $ensure,
+        baseurl  => $yumrepo_base_url,
+        descr    => "Puppet Tools Repository el ${facts['os']['release']['major']} - \$basearch",
+        enabled  => '1',
+        gpgcheck => '1',
+        gpgkey   => "${base_url}${gpgkey}",
+        before   => Package['puppet-bolt'],
+      }
     }
   }
 
