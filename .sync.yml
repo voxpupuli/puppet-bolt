@@ -8,3 +8,5 @@ spec/spec_helper_acceptance.rb:
 .github/workflows/ci.yml:
   with:
     beaker_facter: 'pe_status_check_role:PE-Role:primary'
+spec/spec_helper.rb:
+  facterdb_string_keys: true
