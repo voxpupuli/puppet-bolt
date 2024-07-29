@@ -31,7 +31,7 @@
 # @author Tim Meusel <tim@bastelfreak.de>
 #
 class bolt (
-  String[1] $version = '3.29.0',
+  String[1] $version = 'installed',
   Stdlib::HTTPSUrl $base_url = 'https://yum.puppet.com/',
   String[1] $release_package = "puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm",
   String[1] $gpgkey = 'RPM-GPG-KEY-puppet-20250406',
