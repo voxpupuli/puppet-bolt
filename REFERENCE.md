@@ -204,5 +204,5 @@ Data type: `Array[Stdlib::Absolutepath]`
 
 an array of directories where code lives
 
-Default value: `["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site",]`
+Default value: `["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", '/opt/puppetlabs/puppet/modules']`
 

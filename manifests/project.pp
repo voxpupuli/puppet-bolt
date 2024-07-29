@@ -26,7 +26,7 @@ define bolt::project (
   String[1] $group = $project,
   Boolean $manage_user = true,
   String[1] $environment = 'peadm',
-  Array[Stdlib::Absolutepath] $modulepaths = ["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site",],
+  Array[Stdlib::Absolutepath] $modulepaths = ["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", '/opt/puppetlabs/puppet/modules'],
 ) {
   unless $facts['pe_status_check_role'] in ['primary', 'legacy_primary', 'pe_compiler', 'legacy_compiler'] {
     fail("bolt::project works only on PE primaries and compilers, not: ${facts['pe_status_check_role']}")
