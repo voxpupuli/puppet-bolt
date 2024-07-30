@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v1.1.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.1.0) (2024-07-19)
+## [v1.1.1](https://github.com/voxpupuli/puppet-bolt/tree/v1.1.1) (2024-07-30)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.1.0...v1.1.1)
+
+**Fixed bugs:**
+
+- bolt project: Include PE module path [\#31](https://github.com/voxpupuli/puppet-bolt/pull/31) ([bastelfreak](https://github.com/bastelfreak))
+- set bolt version from 3.29.0 to installed [\#30](https://github.com/voxpupuli/puppet-bolt/pull/30) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v1.1.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.1.0) (2024-07-22)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.0.0...v1.1.0)
 
