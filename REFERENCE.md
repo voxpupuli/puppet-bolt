@@ -69,7 +69,7 @@ Data type: `String[1]`
 
 desired version for bolt or `absent`
 
-Default value: `'3.29.0'`
+Default value: `'installed'`
 
 ##### <a name="-bolt--base_url"></a>`base_url`
 
