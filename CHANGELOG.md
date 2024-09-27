@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.2.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.2.0) (2024-09-27)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.1.1...v1.2.0)
+
+**Implemented enhancements:**
+
+- Add Debian OS family support [\#35](https://github.com/voxpupuli/puppet-bolt/pull/35) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.1.1](https://github.com/voxpupuli/puppet-bolt/tree/v1.1.1) (2024-07-30)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.1.0...v1.1.1)
