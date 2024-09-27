@@ -32,15 +32,15 @@
 #
 class bolt (
   String[1] $version = 'installed',
-  Stdlib::HTTPSUrl $base_url = 'https://yum.puppet.com/',
-  String[1] $release_package = "puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm",
-  String[1] $gpgkey = 'RPM-GPG-KEY-puppet-20250406',
-  Boolean $use_release_package = true,
+  Stdlib::HTTPSUrl $base_url = $facts['os']['family'] ? { 'Debian' => 'https://apt.puppet.com/', 'RedHat' => 'https://yum.puppet.com/', },
+  String[1] $release_package = $facts['os']['family'] ? { 'Debian' => "puppet-release-${fact('os.distro.codename')}.deb", 'RedHat' => "puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm", },
+  String[1] $gpgkey = $facts['os']['family'] ? { 'Debian' => 'DEB-GPG-KEY-puppet-20250406', 'RedHat' => 'RPM-GPG-KEY-puppet-20250406', },
+  Boolean $use_release_package = $facts['os']['family'] ? { 'Debian' => false, 'RedHat' => true, },
   Stdlib::HTTPSUrl $yumrepo_base_url = "${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch",
   Boolean $manage_repo = true,
 ) {
-  unless $facts['os']['family'] == 'RedHat' {
-    fail('class bolt only works on RedHat OS family')
+  unless $facts['os']['family'] in ['RedHat', 'Debian'] {
+    fail("class bolt only works on ${facts['os']['family']} OS family")
   }
 
   $ensure = $version ? {
@@ -55,14 +55,22 @@ class bolt (
         before => Package['puppet-bolt'],
       }
     } else {
-      yumrepo { 'puppet-tools':
-        ensure   => $ensure,
-        baseurl  => $yumrepo_base_url,
-        descr    => "Puppet Tools Repository el ${facts['os']['release']['major']} - \$basearch",
-        enabled  => '1',
-        gpgcheck => '1',
-        gpgkey   => "${base_url}${gpgkey}",
-        before   => Package['puppet-bolt'],
+      if $facts['os']['family'] == 'RedHat' {
+        yumrepo { 'puppet-tools':
+          ensure   => $ensure,
+          baseurl  => $yumrepo_base_url,
+          descr    => "Puppet Tools Repository el ${facts['os']['release']['major']} - \$basearch",
+          enabled  => '1',
+          gpgcheck => '1',
+          gpgkey   => "${base_url}${gpgkey}",
+          before   => Package['puppet-bolt'],
+        }
+      } else {
+        apt::source { 'puppet-tools-release':
+          location => $base_url,
+          repos    => 'puppet-tools',
+          before   => Package['puppet-bolt'],
+        }
       }
     }
   }

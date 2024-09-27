@@ -29,10 +29,17 @@ describe 'bolt::project' do
           it { is_expected.to contain_user(title) }
           it { is_expected.to contain_group(title) }
           it { is_expected.to contain_package('puppet-bolt') }
-          it { is_expected.to contain_package('puppet-tools-release') }
           it { is_expected.not_to contain_yumrepo('puppet-tools') }
           it { is_expected.to contain_sudo__conf(title) }
           it { is_expected.to contain_systemd__unit_file("#{title}@.service") }
+
+          if os_facts['os']['family'] == 'RedHat'
+            it { is_expected.to contain_package('puppet-tools-release') }
+            it { is_expected.not_to contain_apt__source('puppet-tools-release') }
+          else
+            it { is_expected.not_to contain_package('puppet-tools-release') }
+            it { is_expected.to contain_apt__source('puppet-tools-release') }
+          end
         end
       end
 

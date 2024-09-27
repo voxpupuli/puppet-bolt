@@ -52,7 +52,6 @@ describe 'bolt' do
 
     describe 'packages' do
       it { expect(package('puppet-bolt')).to be_installed }
-      it { expect(package('puppet-tools-release')).to be_installed }
     end
   end
 
@@ -71,8 +70,14 @@ describe 'bolt' do
       it { expect(package('puppet-tools-release')).not_to be_installed }
     end
 
-    describe 'file' do
+    describe 'yum file', if: fact('os.family') == 'RedHat' do
       it { expect(file('/etc/yum.repos.d/puppet-tools.repo')).to be_missing.or(have_attributes(size: 0)) }
+      it { expect(file('/etc/apt/sources.list.d/puppet-tools-release.list')).to be_missing.or(have_attributes(size: 0)) }
+    end
+
+    describe 'apt file', if: fact('os.family') != 'RedHat' do
+      it { expect(file('/etc/yum.repos.d/puppet-tools.repo')).to be_missing.or(have_attributes(size: 0)) }
+      it { expect(file('/etc/apt/sources.list.d/puppet-tools-release.list')).to be_file }
     end
   end
 end
