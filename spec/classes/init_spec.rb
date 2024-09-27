@@ -3,17 +3,24 @@
 require 'spec_helper'
 
 describe 'bolt' do
-  on_supported_os.each do |os, facts|
+  on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let :facts do
-        facts
+        os_facts
       end
 
       context 'with all defaults' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_package('puppet-bolt') }
-        it { is_expected.to contain_package('puppet-tools-release') }
         it { is_expected.not_to contain_yumrepo('puppet-tools') }
+
+        if os_facts['os']['family'] == 'RedHat'
+          it { is_expected.to contain_package('puppet-tools-release') }
+          it { is_expected.not_to contain_apt__source('puppet-tools-release') }
+        else
+          it { is_expected.not_to contain_package('puppet-tools-release') }
+          it { is_expected.to contain_apt__source('puppet-tools-release') }
+        end
       end
 
       context 'with use_release_package=false' do
@@ -22,10 +29,15 @@ describe 'bolt' do
         end
 
         it { is_expected.not_to contain_package('puppet-tools-release') }
-        it { is_expected.to contain_yumrepo('puppet-tools') }
+
+        if os_facts['os']['family'] == 'RedHat'
+          it { is_expected.to contain_yumrepo('puppet-tools') }
+        else
+          it { is_expected.to contain_apt__source('puppet-tools-release') }
+        end
       end
 
-      context 'with use_release_package=false and odd mirrors' do
+      context 'with use_release_package=false and odd mirrors', if: os_facts['os']['family'] == 'RedHat' do
         let :params do
           {
             use_release_package: false,
@@ -45,6 +57,7 @@ describe 'bolt' do
 
         it { is_expected.not_to contain_package('puppet-tools-release') }
         it { is_expected.not_to contain_yumrepo('puppet-tools') }
+        it { is_expected.not_to contain_apt__source('puppet-tools-release') }
       end
     end
   end

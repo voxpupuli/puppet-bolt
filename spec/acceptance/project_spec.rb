@@ -16,5 +16,12 @@ describe 'bolt::project' do
     describe package('puppet-bolt') do
       it { is_expected.to be_installed }
     end
+
+    describe 'file' do
+      it { expect(file('/opt/peadmmig/inventory.yaml')).to be_file }
+      it { expect(file('/opt/peadmmig/bolt-project.yaml')).to be_file }
+      it { expect(file('/etc/systemd/system/peadmmig@.service')).to be_file }
+      it { expect(file('/etc/sudoers.d/10_peadmmig')).to be_file }
+    end
   end
 end

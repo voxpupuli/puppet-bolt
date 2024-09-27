@@ -77,7 +77,7 @@ Data type: `Stdlib::HTTPSUrl`
 
 HTTPS URL to the yumrepo base
 
-Default value: `'https://yum.puppet.com/'`
+Default value: `$facts['os']['family'] ? { 'Debian' => 'https://apt.puppet.com/', 'RedHat' => 'https://yum.puppet.com/'`
 
 ##### <a name="-bolt--release_package"></a>`release_package`
 
@@ -85,7 +85,7 @@ Data type: `String[1]`
 
 filename for the release package rpm
 
-Default value: `"puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm"`
+Default value: `$facts['os']['family'] ? { 'Debian' => "puppet-release-${fact('os.distro.codename')}.deb", 'RedHat' => "puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm"`
 
 ##### <a name="-bolt--gpgkey"></a>`gpgkey`
 
@@ -93,7 +93,7 @@ Data type: `String[1]`
 
 name of the GPG key filename in the repo
 
-Default value: `'RPM-GPG-KEY-puppet-20250406'`
+Default value: `$facts['os']['family'] ? { 'Debian' => 'DEB-GPG-KEY-puppet-20250406', 'RedHat' => 'RPM-GPG-KEY-puppet-20250406'`
 
 ##### <a name="-bolt--use_release_package"></a>`use_release_package`
 
@@ -101,7 +101,7 @@ Data type: `Boolean`
 
 enable/disable the puppet-tools-release package installation. When disabled, we will configure the repo as yumrepo resource
 
-Default value: `true`
+Default value: `$facts['os']['family'] ? { 'Debian' => false, 'RedHat' => true`
 
 ##### <a name="-bolt--yumrepo_base_url"></a>`yumrepo_base_url`
 
