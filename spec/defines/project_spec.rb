@@ -13,7 +13,7 @@ describe 'bolt::project' do
             os_facts
           end
 
-          it { is_expected.not_to compile }
+          it { is_expected.to compile.and_raise_error(%r{pe_status_check_role fact is missing from module puppetlabs/pe_status_check}) }
         end
 
         context 'on PE' do
