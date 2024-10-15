@@ -1,6 +1,6 @@
 {
   "name": "puppet-bolt",
-  "version": "1.2.1-rc0",
+  "version": "1.2.2",
   "source": "https://github.com/voxpupuli/puppet-bolt",
   "author": "Vox Pupuli",
   "license": "AGPL-3.0",
