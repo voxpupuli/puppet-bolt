@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.2.2](https://github.com/voxpupuli/puppet-bolt/tree/v1.2.2) (2024-10-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.2.0...v1.2.2)
+
+**Fixed bugs:**
+
+- Raise proper error when fact `pe_status_check_role` is missing [\#37](https://github.com/voxpupuli/puppet-bolt/pull/37) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.2.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.2.0) (2024-09-27)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.1.1...v1.2.0)
