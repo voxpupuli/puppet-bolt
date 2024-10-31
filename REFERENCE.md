@@ -149,6 +149,7 @@ The following parameters are available in the `bolt::project` defined type:
 * [`manage_user`](#-bolt--project--manage_user)
 * [`environment`](#-bolt--project--environment)
 * [`modulepaths`](#-bolt--project--modulepaths)
+* [`local_transport_tmpdir`](#-bolt--project--local_transport_tmpdir)
 
 ##### <a name="-bolt--project--basepath"></a>`basepath`
 
@@ -205,4 +206,12 @@ Data type: `Array[Stdlib::Absolutepath]`
 an array of directories where code lives
 
 Default value: `["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", '/opt/puppetlabs/puppet/modules']`
+
+##### <a name="-bolt--project--local_transport_tmpdir"></a>`local_transport_tmpdir`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+the bolt tmpdir for all local transports
+
+Default value: `undef`
 
