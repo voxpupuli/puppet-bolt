@@ -8,6 +8,7 @@
 # @param manage_user if we should create the user+group or not
 # @param environment the desired code environment we will use
 # @param modulepaths an array of directories where code lives
+# @param local_transport_tmpdir the bolt tmpdir for all local transports
 #
 # @example create one project and provide plan parameters
 #   bolt::project { 'peadmmig': }
@@ -27,6 +28,7 @@ define bolt::project (
   Boolean $manage_user = true,
   String[1] $environment = 'peadm',
   Array[Stdlib::Absolutepath] $modulepaths = ["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", '/opt/puppetlabs/puppet/modules'],
+  Optional[Stdlib::Absolutepath] $local_transport_tmpdir = undef,
 ) {
   unless $facts['pe_status_check_role'] {
     fail('pe_status_check_role fact is missing from module puppetlabs/pe_status_check')
@@ -78,6 +80,11 @@ define bolt::project (
     content => $bolt_project,
   }
 
+  $inventory_config = if $local_transport_tmpdir {
+    { 'config' => { 'local' => { 'tmpdir' => $local_transport_tmpdir } } }
+  } else {
+    {}
+  }
   $inventory = {
     'groups' => [
       {
@@ -90,13 +97,13 @@ define bolt::project (
         ]
       }
     ],
-  }.stdlib::to_yaml({ indentation => 2 })
+  } + $inventory_config
 
   file { "${project_path}/inventory.yaml":
     ensure  => 'file',
     owner   => $owner,
     group   => $group,
-    content => $inventory,
+    content => $inventory.stdlib::to_yaml({ indentation => 2 }),
   }
 
   $data = { 'project' => $project, 'user'=> $owner, 'group' => $group, 'project_path' => $project_path, 'environment' => 'peadm' }
