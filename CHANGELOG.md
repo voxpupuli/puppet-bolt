@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.3.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.3.0) (2024-10-31)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.2.2...v1.3.0)
+
+**Implemented enhancements:**
+
+- Add support for setting tmpdir for local transport [\#39](https://github.com/voxpupuli/puppet-bolt/pull/39) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.2.2](https://github.com/voxpupuli/puppet-bolt/tree/v1.2.2) (2024-10-15)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.2.0...v1.2.2)
