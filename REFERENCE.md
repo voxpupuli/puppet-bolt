@@ -150,6 +150,7 @@ The following parameters are available in the `bolt::project` defined type:
 * [`environment`](#-bolt--project--environment)
 * [`modulepaths`](#-bolt--project--modulepaths)
 * [`local_transport_tmpdir`](#-bolt--project--local_transport_tmpdir)
+* [`puppetdb_urls`](#-bolt--project--puppetdb_urls)
 
 ##### <a name="-bolt--project--basepath"></a>`basepath`
 
@@ -214,4 +215,12 @@ Data type: `Optional[Stdlib::Absolutepath]`
 the bolt tmpdir for all local transports
 
 Default value: `undef`
+
+##### <a name="-bolt--project--puppetdb_urls"></a>`puppetdb_urls`
+
+Data type: `Array[Stdlib::HTTPUrl]`
+
+URIs for PuppetDB, usually the localhost http listener
+
+Default value: `['http://127.0.0.1:8080']`
 
