@@ -9,6 +9,7 @@
 # @param environment the desired code environment we will use
 # @param modulepaths an array of directories where code lives
 # @param local_transport_tmpdir the bolt tmpdir for all local transports
+# @param puppetdb_urls URIs for PuppetDB, usually the localhost http listener
 #
 # @example create one project and provide plan parameters
 #   bolt::project { 'peadmmig': }
@@ -29,6 +30,7 @@ define bolt::project (
   String[1] $environment = 'peadm',
   Array[Stdlib::Absolutepath] $modulepaths = ["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", '/opt/puppetlabs/puppet/modules'],
   Optional[Stdlib::Absolutepath] $local_transport_tmpdir = undef,
+  Array[Stdlib::HTTPUrl] $puppetdb_urls = ['http://127.0.0.1:8080'],
 ) {
   unless $facts['pe_status_check_role'] {
     fail('pe_status_check_role fact is missing from module puppetlabs/pe_status_check')
@@ -70,7 +72,7 @@ define bolt::project (
     'name' => $project,
     'modulepath' => $modulepaths,
     'stream' => true,
-    'puppetdb' => { 'server_urls' => ['http://127.0.0.1:8080'] },
+    'puppetdb' => { 'server_urls' => $puppetdb_urls },
   }.stdlib::to_yaml({ 'indentation' => 2 })
 
   file { "${project_path}/bolt-project.yaml":

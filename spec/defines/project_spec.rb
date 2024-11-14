@@ -23,7 +23,7 @@ describe 'bolt::project' do
         context 'with defaults' do
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('bolt') }
-          it { is_expected.to contain_file('/opt/peadm/bolt-project.yaml').with_ensure('file') }
+          it { is_expected.to contain_file('/opt/peadm/bolt-project.yaml').with_ensure('file').with_content(%r{http://127.0.0.1:8080}) }
           it { is_expected.to contain_file('/opt/peadm/inventory.yaml').with_ensure('file').without_content(%r{tmpdir}) }
           it { is_expected.to contain_file('/opt/peadm').with_ensure('directory') }
           it { is_expected.to contain_user(title) }
@@ -40,6 +40,14 @@ describe 'bolt::project' do
             it { is_expected.not_to contain_package('puppet-tools-release') }
             it { is_expected.to contain_apt__source('puppet-tools-release') }
           end
+        end
+
+        context 'with https PuppetDB URL' do
+          let :params do
+            { puppetdb_urls: ['https://[::1]:8081'] }
+          end
+
+          it { is_expected.to contain_file('/opt/peadm/bolt-project.yaml').with_ensure('file').with_content(%r{https://\[::1\]:8081}) }
         end
 
         context 'with manage_user=false on PE' do
