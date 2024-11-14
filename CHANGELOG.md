@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v1.3.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.3.0) (2024-10-31)
+## [v1.4.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.4.0) (2024-11-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.3.0...v1.4.0)
+
+**Implemented enhancements:**
+
+- bolt project: Make PuppetDB URIs configureable [\#41](https://github.com/voxpupuli/puppet-bolt/pull/41) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v1.3.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.3.0) (2024-11-01)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.2.2...v1.3.0)
 
