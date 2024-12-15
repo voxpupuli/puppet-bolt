@@ -52,8 +52,8 @@ class bolt (
       package { 'puppet-tools-release':
         ensure => $ensure,
         source => "${base_url}${release_package}",
-        before => Package['puppet-bolt'],
       }
+      $require = Package['puppet-tools-release']
     } else {
       if $facts['os']['family'] == 'RedHat' {
         yumrepo { 'puppet-tools':
@@ -63,19 +63,25 @@ class bolt (
           enabled  => '1',
           gpgcheck => '1',
           gpgkey   => "${base_url}${gpgkey}",
-          before   => Package['puppet-bolt'],
         }
+        $require = Yumrepo['puppet-tools']
       } else {
         apt::source { 'puppet-tools-release':
           location => $base_url,
           repos    => 'puppet-tools',
           before   => Package['puppet-bolt'],
         }
+        # the update class, according to puppetlabs/apt, needs to be called before the package resource
+        # https://github.com/puppetlabs/puppetlabs-apt?tab=readme-ov-file#adding-new-sources-or-ppas
+        $require = [Class['apt::update'], Apt::Source['puppet-tools-release']]
       }
     }
+  } else {
+    $require = undef
   }
 
   package { 'puppet-bolt':
     ensure  => $version,
+    require => $require,
   }
 }
