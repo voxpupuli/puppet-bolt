@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.6.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.6.0) (2024-12-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.5.0...v1.6.0)
+
+**Implemented enhancements:**
+
+- Add Debian 12 support [\#48](https://github.com/voxpupuli/puppet-bolt/pull/48) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Apt: Ensure apt-update runs before installing bolt [\#46](https://github.com/voxpupuli/puppet-bolt/pull/46) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- puppet/systemd: allow 8.x [\#45](https://github.com/voxpupuli/puppet-bolt/pull/45) ([jay7x](https://github.com/jay7x))
+
 ## [v1.5.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.5.0) (2024-11-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.4.0...v1.5.0)
