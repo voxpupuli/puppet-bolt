@@ -28,7 +28,7 @@ define bolt::project (
   String[1] $group = $project,
   Boolean $manage_user = true,
   String[1] $environment = 'peadm',
-  Array[Stdlib::Absolutepath] $modulepaths = ["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", '/opt/puppetlabs/puppet/modules'],
+  Array[Stdlib::Absolutepath] $modulepaths = ["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", "/etc/puppetlabs/puppetserver/code/environments/${environment}/site/", "/etc/puppetlabs/puppetserver/code/environments/${environment}/modules/", '/opt/puppetlabs/puppet/modules'],
   Optional[Stdlib::Absolutepath] $local_transport_tmpdir = undef,
   Array[Stdlib::HTTPUrl] $puppetdb_urls = ['http://127.0.0.1:8080'],
 ) {
