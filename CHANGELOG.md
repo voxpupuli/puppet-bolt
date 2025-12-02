@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.0.0](https://github.com/voxpupuli/puppet-bolt/tree/v2.0.0) (2025-12-02)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.8.0...v2.0.0)
+
+**Breaking changes:**
+
+- Drop puppet 7 support [\#64](https://github.com/voxpupuli/puppet-bolt/pull/64) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- puppet/systemd: Allow 9.x [\#63](https://github.com/voxpupuli/puppet-bolt/pull/63) ([marcusdots](https://github.com/marcusdots))
+
 ## [v1.8.0](https://github.com/voxpupuli/puppet-bolt/tree/v1.8.0) (2025-01-31)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v1.7.0...v1.8.0)
