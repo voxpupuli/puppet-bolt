@@ -34,7 +34,7 @@ class bolt (
   String[1] $version = 'installed',
   Stdlib::HTTPSUrl $base_url = $facts['os']['family'] ? { 'Debian' => 'https://apt.puppet.com/', 'RedHat' => 'https://yum.puppet.com/', },
   String[1] $release_package = $facts['os']['family'] ? { 'Debian' => "puppet-release-${fact('os.distro.codename')}.deb", 'RedHat' => "puppet-tools-release-el-${facts['os']['release']['major']}.noarch.rpm", },
-  String[1] $gpgkey = $facts['os']['family'] ? { 'Debian' => 'DEB-GPG-KEY-puppet-20250406', 'RedHat' => 'RPM-GPG-KEY-puppet-20250406', },
+  String[1] $gpgkey = $facts['os']['family'] ? { 'Debian' => 'DEB-GPG-KEY-future', 'RedHat' => 'RPM-GPG-KEY-puppet', },
   Boolean $use_release_package = $facts['os']['family'] ? { 'Debian' => false, 'RedHat' => true, },
   Stdlib::HTTPSUrl $yumrepo_base_url = "${base_url}puppet-tools/el/${facts['os']['release']['major']}/\$basearch",
   Boolean $manage_repo = true,
