@@ -69,6 +69,10 @@ class bolt (
         apt::source { 'puppet-tools-release':
           location => $base_url,
           repos    => 'puppet-tools',
+          key      => {
+            'name'   => 'puppet-tools-release.asc',
+            'source' => "${base_url}${gpgkey}",
+          },
           before   => Package['puppet-bolt'],
         }
         # the update class, according to puppetlabs/apt, needs to be called before the package resource
