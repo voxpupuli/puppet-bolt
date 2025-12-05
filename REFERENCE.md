@@ -93,7 +93,7 @@ Data type: `String[1]`
 
 name of the GPG key filename in the repo
 
-Default value: `$facts['os']['family'] ? { 'Debian' => 'DEB-GPG-KEY-puppet-20250406', 'RedHat' => 'RPM-GPG-KEY-puppet-20250406'`
+Default value: `$facts['os']['family'] ? { 'Debian' => 'DEB-GPG-KEY-future', 'RedHat' => 'RPM-GPG-KEY-puppet'`
 
 ##### <a name="-bolt--use_release_package"></a>`use_release_package`
 
