@@ -97,7 +97,7 @@ define bolt::project (
             'uri' => 'local://localhost',
           },
         ]
-      }
+      },
     ],
   } + $inventory_config
 
