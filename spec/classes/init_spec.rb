@@ -42,7 +42,7 @@ describe 'bolt' do
           {
             use_release_package: false,
             base_url: 'https://foo.com/',
-            yumrepo_base_url: 'https://bar.com/'
+            yumrepo_base_url: 'https://bar.com/',
           }
         end
 
