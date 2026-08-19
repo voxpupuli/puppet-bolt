@@ -206,7 +206,17 @@ Data type: `Array[Stdlib::Absolutepath]`
 
 an array of directories where code lives
 
-Default value: `["/etc/puppetlabs/code/environments/${environment}/modules", "/etc/puppetlabs/code/environments/${environment}/site", "/etc/puppetlabs/puppetserver/code/environments/${environment}/site/", "/etc/puppetlabs/puppetserver/code/environments/${environment}/modules/", '/opt/puppetlabs/puppet/modules']`
+Default value:
+
+```puppet
+[
+    "/etc/puppetlabs/code/environments/${environment}/modules",
+    "/etc/puppetlabs/code/environments/${environment}/site",
+    "/etc/puppetlabs/puppetserver/code/environments/${environment}/site/",
+    "/etc/puppetlabs/puppetserver/code/environments/${environment}/modules/",
+    '/opt/puppetlabs/puppet/modules',
+  ]
+```
 
 ##### <a name="-bolt--project--local_transport_tmpdir"></a>`local_transport_tmpdir`
 
