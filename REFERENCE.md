@@ -210,10 +210,10 @@ Default value:
 
 ```puppet
 [
-    "/etc/puppetlabs/code/environments/${environment}/modules",
-    "/etc/puppetlabs/code/environments/${environment}/site",
     "/etc/puppetlabs/puppetserver/code/environments/${environment}/site/",
     "/etc/puppetlabs/puppetserver/code/environments/${environment}/modules/",
+    "/etc/puppetlabs/code/environments/${environment}/modules",
+    "/etc/puppetlabs/code/environments/${environment}/site",
     '/opt/puppetlabs/puppet/modules',
   ]
 ```
