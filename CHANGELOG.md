@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v2.1.0](https://github.com/voxpupuli/puppet-bolt/tree/v2.1.0) (2025-12-05)
+## [v2.1.1](https://github.com/voxpupuli/puppet-bolt/tree/v2.1.1) (2026-08-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v2.1.0...v2.1.1)
+
+**Fixed bugs:**
+
+- Remove PE/primary constraint [\#74](https://github.com/voxpupuli/puppet-bolt/pull/74) ([bastelfreak](https://github.com/bastelfreak))
+- Use versioned paths before legacy paths [\#73](https://github.com/voxpupuli/puppet-bolt/pull/73) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v2.1.0](https://github.com/voxpupuli/puppet-bolt/tree/v2.1.0) (2026-01-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-bolt/compare/v2.0.0...v2.1.0)
 
