@@ -38,12 +38,6 @@ define bolt::project (
   Optional[Stdlib::Absolutepath] $local_transport_tmpdir = undef,
   Array[Stdlib::HTTPUrl] $puppetdb_urls = ['http://127.0.0.1:8080'],
 ) {
-  unless $facts['pe_status_check_role'] {
-    fail('pe_status_check_role fact is missing from module puppetlabs/pe_status_check')
-  }
-  unless $facts['pe_status_check_role'] in ['primary', 'legacy_primary', 'pe_compiler', 'legacy_compiler'] {
-    fail("bolt::project works only on PE primaries and compilers, not: ${facts['pe_status_check_role']}")
-  }
   # installs bolt
   require bolt
 
