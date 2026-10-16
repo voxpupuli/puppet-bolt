@@ -233,4 +233,3 @@ Data type: `Array[Stdlib::HTTPUrl]`
 URIs for PuppetDB, usually the localhost http listener
 
 Default value: `['http://127.0.0.1:8080']`
-
